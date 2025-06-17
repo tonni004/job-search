@@ -17,6 +17,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [loginError, setLoginError] = useState("");
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     email: "",
@@ -26,6 +27,7 @@ export default function LoginPage() {
   const handleSubmit = async (values: typeof initialValues) => {
     setLoginError("");
     try {
+      setLoading(true);
       const { data } = await loginUser(values.email, values.password);
       localStorage.setItem("token", data.token);
       router.push("/jobs");
@@ -99,7 +101,7 @@ export default function LoginPage() {
                 type="submit"
                 className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
               >
-                Sign In
+                {loading ? 'Loading...' : "Sign In"}
               </button>
           </Form>
         )}

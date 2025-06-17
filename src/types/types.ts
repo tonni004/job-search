@@ -1,25 +1,3 @@
-export interface Job {
-  job_id: string;
-  location: string;
-  job_title: string;
-  min_salary: number;
-  max_salary: number;
-  median_salary: number;
-  min_base_salary: number;
-  max_base_salary: number;
-  median_base_salary: number;
-  min_additional_pay: number;
-  max_additional_pay: number;
-  median_additional_pay: number;
-  salary_period: string;
-  salary_currency: string;
-  salary_count: number;
-  salaries_updated_at: string;
-  publisher_name: string;
-  publisher_link: string;
-  confidence: string;
-}
-
 export interface JobDetailsParameters {
   job_id: string;
   country: string;
@@ -78,4 +56,3 @@ export interface JobDetailsResponse {
   parameters: JobDetailsParameters;
   data: JobDetails[];
 }
-

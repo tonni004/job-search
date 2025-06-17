@@ -22,6 +22,7 @@ export default function RegisterPage() {
   const router = useRouter();
   const [registerError, setRegisterError] = useState("");
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     email: "",
@@ -32,9 +33,9 @@ export default function RegisterPage() {
   const handleSubmit = async (values: typeof initialValues) => {
     setRegisterError("");
     try {
-      const { data } = await registerUser(values.email, values.password);
-      localStorage.setItem("token", data.token);
-      router.push("/jobs");
+      setLoading(true);
+      await registerUser(values.email, values.password);
+      router.push("/login");
     } catch (err: any) {
       setRegisterError(err.response?.data?.error || "Registration failed");
     }
@@ -120,7 +121,7 @@ export default function RegisterPage() {
               type="submit"
               className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
             >
-              Sign Up
+              {loading ? 'Loading...' : "Sign Up"}
             </button>
           </Form>
         )}

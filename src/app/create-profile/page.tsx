@@ -59,7 +59,7 @@ export default function CreateProfilePage() {
           <Form className="flex flex-col gap-4">
             <label>
               Name
-              <Field name="name" className="block w-full p-2 border rounded" />
+              <Field name="name" className="block w-full p-2 border rounded"/>
               <ErrorMessage
                 name="name"
                 component="div"
@@ -90,25 +90,25 @@ export default function CreateProfilePage() {
               />
             </label>
 
-          <div className="flex gap-4 justify-end">
-            <BackButton />
-            <button
-              type="submit"
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-            >
-              Save
-            </button>
-
-            {hasProfile && (
+            <div className="flex gap-4 justify-end">
+              <BackButton/>
               <button
-                type="button"
-                onClick={handleDelete}
-                className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+                type="submit"
+                className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
               >
-                Delete
+                Save
               </button>
-            )}
-          </div>
+
+              {hasProfile && (
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
           </Form>
         )}
       </Formik>
