@@ -4,7 +4,7 @@ This is a frontend application built with Next.js 14 and TypeScript for searchin
 
 ## Demo 👇
 
-[DEMO LINK]('https://job-search-eight-iota.vercel.app/jobs')
+[DEMO LINK]('https://job-search-eight-iota.vercel.app/login')
 
 ## Features
 
