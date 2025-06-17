@@ -8,11 +8,14 @@ import { JobDetails} from "@/types/types";
 import Loader from "@/components/Loader";
 import Link from "next/link";
 import LogoutButton from "@/components/LogoutButton";
+import {useRouter} from "next/navigation";
 
 export default function JobsPage() {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [profileName, setProfileName] = useState("");
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,6 +38,17 @@ export default function JobsPage() {
     debouncedQuery ? ["searchJobs", debouncedQuery] : null,
     () => searchJobs(debouncedQuery)
   );
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.replace("/login");
+    } else {
+      setIsCheckingAuth(false);
+    }
+  }, [router]);
+
+  if (isCheckingAuth) return <div className="flex items-center justify-center min-h-screen"><Loader/></div>;
 
   return (
     <main className="p-8 max-w-3xl mx-auto">
